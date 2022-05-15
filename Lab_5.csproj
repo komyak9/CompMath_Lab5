@@ -117,6 +117,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\IterationMethodLibrary\IterationMethodLibrary.csproj">
+      <Project>{ee33dba7-b2d6-4518-ab10-68a15bb62fcf}</Project>
+      <Name>IterationMethodLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SplineInterpolationLibrary\SplineInterpolationLibrary.csproj">
+      <Project>{7617c1ec-a9ba-445e-86d1-d2bbbe588ea6}</Project>
+      <Name>SplineInterpolationLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

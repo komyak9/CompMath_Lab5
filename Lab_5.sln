@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab_5", "Lab_5.csproj", "{EDE1B496-7C8E-48A1-9D07-E395D7190EF2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SplineInterpolationLibrary", "..\SplineInterpolationLibrary\SplineInterpolationLibrary.csproj", "{7617C1EC-A9BA-445E-86D1-D2BBBE588EA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IterationMethodLibrary", "..\IterationMethodLibrary\IterationMethodLibrary.csproj", "{EE33DBA7-B2D6-4518-AB10-68A15BB62FCF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{EDE1B496-7C8E-48A1-9D07-E395D7190EF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDE1B496-7C8E-48A1-9D07-E395D7190EF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDE1B496-7C8E-48A1-9D07-E395D7190EF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7617C1EC-A9BA-445E-86D1-D2BBBE588EA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7617C1EC-A9BA-445E-86D1-D2BBBE588EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7617C1EC-A9BA-445E-86D1-D2BBBE588EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7617C1EC-A9BA-445E-86D1-D2BBBE588EA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE33DBA7-B2D6-4518-AB10-68A15BB62FCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE33DBA7-B2D6-4518-AB10-68A15BB62FCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE33DBA7-B2D6-4518-AB10-68A15BB62FCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE33DBA7-B2D6-4518-AB10-68A15BB62FCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
