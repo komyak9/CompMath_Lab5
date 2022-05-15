@@ -34,12 +34,12 @@
                 </StackPanel>
             </GroupBox>
             <DockPanel LastChildFill="True">
-                <TextBlock Text="Count of points: " Margin="5" DockPanel.Dock="Left" VerticalAlignment="Center"/>
-                <TextBox x:Name="count" Height="20" Width="Auto"/>
-            </DockPanel>
-            <DockPanel LastChildFill="True">
                 <TextBlock Text="Upper border: " Margin="5" DockPanel.Dock="Left" VerticalAlignment="Center"/>
                 <TextBox x:Name="xn" Height="20" Width="Auto"/>
+            </DockPanel>
+            <DockPanel LastChildFill="True">
+                <TextBlock Text="Count of points: " Margin="5" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                <TextBox x:Name="count" Height="20" Width="Auto"/>
             </DockPanel>
             <Button x:Name="CalcButton" HorizontalAlignment="Center" Height="25" Margin="0 10 0 0" Padding="10 0 10 0" Cursor="Hand" Click="CalcButtonClick">Start</Button>
         </StackPanel>
