@@ -8,7 +8,7 @@ namespace Lab_5
 {
     internal abstract class Function
     {
-        public abstract double CalculateValue(double x, double y);
+        public abstract double CalculateValue(double x);
 
         public abstract double CalculateFirstDerivative(double x, double y);
     }

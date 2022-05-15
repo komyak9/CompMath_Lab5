@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -25,24 +27,35 @@ namespace Lab_5
 
         private void CalcButtonClick(object sender, RoutedEventArgs e)
         {
+            Calculator calculator;
             Graph.Plot.Clear();
 
+            Function function;
             double x0, y0, xn;
             uint pointsCount;
-
             try
             {
                 x0 = ReadX0();
                 y0 = ReadY0();
                 xn = ReadXn();
                 pointsCount = ReadPointsCount();
+                function = GetFunction();
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            MessageBox.Show($"x0: {x0}\ty0: {y0}\txn: {xn}\tcount: {pointsCount}");
+            calculator = new Calculator(x0, y0, xn, pointsCount, function);
+            calculator.Calculate();
+
+            DrawPoints(calculator.OrigninalX, calculator.OrigninalY, System.Drawing.Color.CornflowerBlue, "Original", 1, 1);
+        }
+
+        private void DrawPoints(double[] dataX, double[] dataY, System.Drawing.Color color, string lbl, int markSize, int lineSize)
+        {
+            Graph.Plot.AddScatter(dataX, dataY, lineWidth: lineSize, color: color, markerSize: markSize, label: lbl);
+            Graph.Refresh();
         }
 
         private double ReadX0()
@@ -103,6 +116,23 @@ namespace Lab_5
                 throw new Exception("Count of points must be 2 or greater.");
 
             return pointsCount;
+        }
+
+        private Function GetFunction()
+        {
+            List<RadioButton> radioButtons = Functions.Children.OfType<RadioButton>().Where(r => r.GroupName == "FunctionRadioButton").ToList();
+            RadioButton radioButton = null;
+            foreach (var r in radioButtons)
+                if (r.IsChecked == true) radioButton = r;
+
+            if (radioButton == null)
+                throw new Exception("Function must be chosen!");
+            else
+            {
+                foreach (Function f in functions)
+                    if (f.ToString() == radioButton.Content.ToString()) return f;
+            }
+            return null;
         }
     }
 }

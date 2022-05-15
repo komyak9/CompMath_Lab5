@@ -10,7 +10,7 @@ namespace Lab_5
     {
         public override double CalculateFirstDerivative(double x, double y) => x * y;
 
-        public override double CalculateValue(double x, double y) => Math.Pow(Math.E, Math.Pow(x, 2) / 2);
+        public override double CalculateValue(double x) => Math.Pow(Math.E, Math.Pow(x, 2) / 2);
 
         public override string ToString() => "y' = x * y\ny(0) = 1";
     }

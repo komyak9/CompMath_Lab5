@@ -77,10 +77,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AdvancedEulerMethod.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Calculator.cs" />
     <Compile Include="Functions\Function.cs" />
     <Compile Include="Functions\FunctionOne.cs" />
     <Compile Include="MainWindow.xaml.cs">
