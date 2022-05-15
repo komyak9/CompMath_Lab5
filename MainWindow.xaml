@@ -1,0 +1,55 @@
+﻿<Window x:Class="Lab_5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab_5"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="LeftPanel" Margin="10" Grid.Column="0">
+            <GroupBox Padding="5">
+                <GroupBox.Header>
+                    <TextBlock FontWeight="DemiBold">Select a function</TextBlock>
+                </GroupBox.Header>
+                <StackPanel Name="Functions"/>
+            </GroupBox>
+            <GroupBox Padding="5">
+                <GroupBox.Header>
+                    <TextBlock FontWeight="DemiBold">Choose start point</TextBlock>
+                </GroupBox.Header>
+                <StackPanel>
+                    <DockPanel LastChildFill="True">
+                        <TextBlock Text="x0: " Margin="5" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                        <TextBox x:Name="x0" Height="20" Width="Auto"/>
+                    </DockPanel>
+                    <DockPanel LastChildFill="True">
+                        <TextBlock Text="y0: " Margin="5" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                        <TextBox x:Name="y0" Height="20" Width="Auto"/>
+                    </DockPanel>
+                </StackPanel>
+            </GroupBox>
+            <DockPanel LastChildFill="True">
+                <TextBlock Text="Count of points: " Margin="5" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                <TextBox x:Name="count" Height="20" Width="Auto"/>
+            </DockPanel>
+            <DockPanel LastChildFill="True">
+                <TextBlock Text="Upper border: " Margin="5" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                <TextBox x:Name="xn" Height="20" Width="Auto"/>
+            </DockPanel>
+            <Button x:Name="CalcButton" HorizontalAlignment="Center" Height="25" Margin="0 10 0 0" Padding="10 0 10 0" Cursor="Hand" Click="CalcButtonClick">Start</Button>
+        </StackPanel>
+        <Grid Margin="10" Grid.Column="1">
+            <GroupBox Padding="5">
+                <GroupBox.Header>
+                    <TextBlock FontWeight="Bold">Graph</TextBlock>
+                </GroupBox.Header>
+                <WpfPlot Name="Graph"/>
+            </GroupBox>
+        </Grid>
+    </Grid>
+</Window>
