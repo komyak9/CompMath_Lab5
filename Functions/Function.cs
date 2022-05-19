@@ -18,6 +18,7 @@ namespace Lab_5
 
         public uint ChosenPoint
         {
+            get { return chosenPoint; }
             set { chosenPoint = value; }
         }
 

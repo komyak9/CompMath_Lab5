@@ -45,23 +45,22 @@ namespace Lab_5
             Calculator calculator;
             Graph.Plot.Clear();
 
-            Function function;
-            double x0, y0, xn;
+            double xn;
             uint pointsCount;
             try
             {
-                x0 = 0;
-                y0 = 1;
                 xn = ReadXn();
                 pointsCount = ReadPointsCount();
-                function = GetFunction();
+                if (function == null)
+                    throw new Exception("Any function must be chosen.");
+                function.ChosenPoint = ReadPointNumber();
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            calculator = new Calculator(x0, y0, xn, pointsCount, function);
+            calculator = new Calculator(function.Points[function.ChosenPoint].X, function.Points[function.ChosenPoint].Y, xn, pointsCount, function);
             calculator.Calculate();
 
             DrawPoints(calculator.OrigninalX, calculator.OrigninalY, System.Drawing.Color.CornflowerBlue, "Original", 1, 1);
@@ -116,6 +115,19 @@ namespace Lab_5
             return xnValue;
         }
 
+        private uint ReadPointNumber()
+        {
+            RadioButton radioButton = Point.Children.OfType<RadioButton>().Where(r => r.IsChecked == true).First();
+            if (radioButton != null)
+            {
+                string name = radioButton.Name;
+                char n = name[name.Length - 1];
+                return Convert.ToUInt32(n) - 48;
+            }
+            else
+                throw new Exception("Point must be chosen!");
+        }
+
         private uint ReadPointsCount()
         {
             uint pointsCount;
@@ -136,18 +148,12 @@ namespace Lab_5
 
         private Function GetFunction()
         {
-            List<RadioButton> radioButtons = Functions.Children.OfType<RadioButton>().Where(r => r.GroupName == "FunctionRadioButton").ToList();
-            RadioButton radioButton = null;
-            foreach (var r in radioButtons)
-                if (r.IsChecked == true) radioButton = r;
+            RadioButton radioButton = Functions.Children.OfType<RadioButton>().Where(r => r.IsChecked == true).First();
 
-            if (radioButton == null)
-                throw new Exception("Function must be chosen!");
-            else
-            {
-                foreach (Function f in functions)
-                    if (f.ToString() == radioButton.Content.ToString()) return f;
-            }
+            foreach (Function f in functions)
+                if (f.ToString() == radioButton.Content.ToString())
+                    return f;
+
             return null;
         }
     }
