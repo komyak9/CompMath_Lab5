@@ -49,11 +49,15 @@ namespace Lab_5
             uint pointsCount;
             try
             {
-                xn = ReadXn();
-                pointsCount = ReadPointsCount();
                 if (function == null)
                     throw new Exception("Any function must be chosen.");
+
                 function.ChosenPoint = ReadPointNumber();
+                xn = ReadXn();
+                pointsCount = ReadPointsCount();
+
+                if (xn <= function.Points[function.ChosenPoint].X)
+                    throw new Exception("Upper border can't be lower or same as lower one.");
             }
             catch (Exception exception)
             {
@@ -89,7 +93,7 @@ namespace Lab_5
 
         private uint ReadPointNumber()
         {
-            RadioButton radioButton = Point.Children.OfType<RadioButton>().Where(r => r.IsChecked == true).First();
+            RadioButton radioButton = Point.Children.OfType<RadioButton>().Where(r => r.IsChecked == true).FirstOrDefault();
             if (radioButton != null)
             {
                 string name = radioButton.Name;
@@ -109,7 +113,7 @@ namespace Lab_5
             }
             catch
             {
-                throw new Exception("Check input for count of points.");
+                throw new Exception("Check input for count of points. No negative values accepted.");
             }
 
             if (pointsCount < 2)
