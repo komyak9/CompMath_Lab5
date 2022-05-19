@@ -10,6 +10,7 @@ namespace Lab_5
     {
         private readonly Function[] functions = { new FunctionOne(), new FunctionTwo(), new FunctionThree() };
         private Function function = null;
+        private Calculator calculator = null;
 
         public MainWindow()
         {
@@ -42,7 +43,6 @@ namespace Lab_5
 
         private void CalcButtonClick(object sender, RoutedEventArgs e)
         {
-            Calculator calculator;
             Graph.Plot.Clear();
 
             double xn;
@@ -69,6 +69,8 @@ namespace Lab_5
 
             DrawPoints(calculator.OrigninalX, calculator.OrigninalY, System.Drawing.Color.CornflowerBlue, "Original", 1, 1);
             DrawPoints(calculator.InterpolatedX, calculator.InterpolatedY, System.Drawing.Color.Red, "Interpolated Euler method points", 1, 1);
+
+            pointCalculator.Visibility = Visibility.Visible;
         }
 
         private void DrawPoints(double[] dataX, double[] dataY, System.Drawing.Color color, string lbl, int markSize, int lineSize)
@@ -131,6 +133,35 @@ namespace Lab_5
                     return f;
 
             return null;
+        }
+
+        private void CalculateY_TextChanged(object sender, RoutedEventArgs e)
+        {
+
+            if (x.Text == "-" || x.Text == "\u2408" || x.Text == string.Empty)
+                return;
+
+            double xValue, originalY, interpolatedY;
+            try
+            {
+                xValue = double.Parse(x.Text);
+                if (xValue < calculator.X0 || xValue > calculator.Xn)
+                    throw new Exception("X must be in range [x0, xn].");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            originalY = calculator.CalculateOriginalY(xValue);
+            interpolatedY = calculator.CalculateInterpolatedY(xValue);
+            yOriginal.Text = originalY.ToString();
+            yInterpolated.Text = interpolatedY.ToString();
+            error.Text = Math.Abs(originalY - interpolatedY).ToString();
+
+            Graph.Plot.AddPoint(xValue, originalY, color: System.Drawing.Color.CornflowerBlue, size: 7);
+            Graph.Plot.AddPoint(xValue, interpolatedY, color: System.Drawing.Color.Red, size: 7);
+            Graph.Refresh();
         }
     }
 }

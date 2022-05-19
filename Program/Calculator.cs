@@ -37,6 +37,10 @@ namespace Lab_5
             interpolation.Calculate();
         }
 
+        public double CalculateInterpolatedY(double x) => interpolation.CalculateInterpolatedY(x);
+
+        public double CalculateOriginalY(double x) => function.CalculateValue(x);
+
         private void FillXValues()
         {
             double h = (double)(xn - x0) / (calculatedX.Length - 1);
@@ -44,6 +48,21 @@ namespace Lab_5
             {
                 calculatedX[i] = x0 + i * h;
             }
+        }
+
+        public double X0
+        {
+            get { return x0; }
+        }
+
+        public double Y0
+        {
+            get { return y0; }
+        }
+
+        public double Xn
+        {
+            get { return xn; }
         }
 
         public double[] OrigninalX
@@ -94,5 +113,7 @@ namespace Lab_5
             }
             return points;
         }
+
+
     }
 }
