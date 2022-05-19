@@ -85,6 +85,8 @@
     <Compile Include="Calculator.cs" />
     <Compile Include="Functions\Function.cs" />
     <Compile Include="Functions\FunctionOne.cs" />
+    <Compile Include="Functions\FunctionThree.cs" />
+    <Compile Include="Functions\FunctionTwo.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

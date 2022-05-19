@@ -8,7 +8,7 @@ namespace Lab_5
 {
     public partial class MainWindow : Window
     {
-        private readonly Function[] functions = { new FunctionOne() };
+        private readonly Function[] functions = { new FunctionOne(), new FunctionTwo(), new FunctionThree() };
         private Function function = null;
 
         public MainWindow()
@@ -72,34 +72,6 @@ namespace Lab_5
             Graph.Plot.AddScatter(dataX, dataY, lineWidth: lineSize, color: color, markerSize: markSize, label: lbl);
             Graph.Refresh();
         }
-
-        //private double ReadX0()
-        //{
-        //    double x0Value;
-        //    try
-        //    {
-        //        x0Value = double.Parse(x0.Text);
-        //    }
-        //    catch
-        //    {
-        //        throw new Exception("Check input for 'x0'.");
-        //    }
-        //    return x0Value;
-        //}
-
-        //private double ReadY0()
-        //{
-        //    double y0Value;
-        //    try
-        //    {
-        //        y0Value = double.Parse(y0.Text);
-        //    }
-        //    catch
-        //    {
-        //        throw new Exception("Check input for 'y0'.");
-        //    }
-        //    return y0Value;
-        //}
 
         private double ReadXn()
         {
