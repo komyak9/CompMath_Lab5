@@ -1,9 +1,5 @@
-﻿using System;
+﻿using SplineInterpolationLibrary;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SplineInterpolationLibrary;
 
 namespace Lab_5
 {
