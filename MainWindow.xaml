@@ -22,15 +22,8 @@
                 <GroupBox.Header>
                     <TextBlock FontWeight="DemiBold">Choose start point</TextBlock>
                 </GroupBox.Header>
-                <StackPanel>
-                    <DockPanel LastChildFill="True">
-                        <TextBlock Text="x0: " Margin="5" DockPanel.Dock="Left" VerticalAlignment="Center"/>
-                        <TextBox x:Name="x0" Height="20" Width="Auto"/>
-                    </DockPanel>
-                    <DockPanel LastChildFill="True">
-                        <TextBlock Text="y0: " Margin="5" DockPanel.Dock="Left" VerticalAlignment="Center"/>
-                        <TextBox x:Name="y0" Height="20" Width="Auto"/>
-                    </DockPanel>
+                <StackPanel Name="Point">
+                    <TextBlock FontSize="10" FontWeight="ExtraLight" FontStyle="Oblique">Choose a function to view options...</TextBlock>
                 </StackPanel>
             </GroupBox>
             <DockPanel LastChildFill="True">

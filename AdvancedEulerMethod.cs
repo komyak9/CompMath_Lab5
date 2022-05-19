@@ -27,7 +27,7 @@ namespace Lab_5
             double deltaY;
             for (int i = 0; i < y.Length - 1; i++)
             {
-                deltaY = h * function.CalculateFirstDerivative(x[i] + h / 2, y[i] + h * function.CalculateFirstDerivative(x[i], y[i]) / 2);
+                deltaY = h * function.CalculateDerivative(x[i] + h / 2, y[i] + h * function.CalculateDerivative(x[i], y[i]) / 2);
                 y[i + 1] = y[i] + deltaY;
             }
             return y;

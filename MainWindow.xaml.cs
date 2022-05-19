@@ -9,6 +9,8 @@ namespace Lab_5
     public partial class MainWindow : Window
     {
         private readonly Function[] functions = { new FunctionOne() };
+        private Function function = null;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -21,7 +23,20 @@ namespace Lab_5
 
             for (int i = 0; i < functions.Length; i++)
             {
-                Functions.Children.Add(new RadioButton { GroupName = "FunctionRadioButton", Name = 'f' + (i + 1).ToString(), Content = functions[i] });
+                var rb = new RadioButton { GroupName = "FunctionRadioButton", Name = 'f' + (i + 1).ToString(), Content = functions[i] };
+                rb.Checked += RadioButton_Checked;
+                Functions.Children.Add(rb);
+            }
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            Point.Children.Clear();
+            function = GetFunction();
+
+            for (int i = 0; i < function.Points.Length; i++)
+            {
+                Point.Children.Add(new RadioButton { GroupName = "PointsList", Name = 'p' + i.ToString(), Content = $"({function.Points[i].X}, {function.Points[i].Y})" });
             }
         }
 
@@ -35,8 +50,8 @@ namespace Lab_5
             uint pointsCount;
             try
             {
-                x0 = ReadX0();
-                y0 = ReadY0();
+                x0 = 0;
+                y0 = 1;
                 xn = ReadXn();
                 pointsCount = ReadPointsCount();
                 function = GetFunction();
@@ -59,33 +74,33 @@ namespace Lab_5
             Graph.Refresh();
         }
 
-        private double ReadX0()
-        {
-            double x0Value;
-            try
-            {
-                x0Value = double.Parse(x0.Text);
-            }
-            catch
-            {
-                throw new Exception("Check input for 'x0'.");
-            }
-            return x0Value;
-        }
+        //private double ReadX0()
+        //{
+        //    double x0Value;
+        //    try
+        //    {
+        //        x0Value = double.Parse(x0.Text);
+        //    }
+        //    catch
+        //    {
+        //        throw new Exception("Check input for 'x0'.");
+        //    }
+        //    return x0Value;
+        //}
 
-        private double ReadY0()
-        {
-            double y0Value;
-            try
-            {
-                y0Value = double.Parse(y0.Text);
-            }
-            catch
-            {
-                throw new Exception("Check input for 'y0'.");
-            }
-            return y0Value;
-        }
+        //private double ReadY0()
+        //{
+        //    double y0Value;
+        //    try
+        //    {
+        //        y0Value = double.Parse(y0.Text);
+        //    }
+        //    catch
+        //    {
+        //        throw new Exception("Check input for 'y0'.");
+        //    }
+        //    return y0Value;
+        //}
 
         private double ReadXn()
         {
